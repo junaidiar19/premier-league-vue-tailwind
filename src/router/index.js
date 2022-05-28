@@ -43,6 +43,10 @@ const routes = [
     name: "league",
     component: League,
   },
+  {
+    path: "/*",
+    component: 404,
+  },
 ];
 
 const router = createRouter({
