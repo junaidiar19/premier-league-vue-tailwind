@@ -16,7 +16,7 @@
     <div class="bg-section">
       <div class="container py-4 md:py-8">
         <p class="font-semibold mb-3">Total: {{ total }}</p>
-        <div class="table-responsive card-table">
+        <div class="table-responsive card-table" :class="loading ? 'loading-table' : '' ">
           <table class="table">
             <thead>
               <tr>
@@ -25,9 +25,6 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-if="loading">
-                <td colspan="2" align="center" class="px-6 py-4 text-gray-500">Loading...</td>
-              </tr>
               <tr v-for="(item, index) in leagues" v-bind:key="index">
                 <td>
                   <div class="flex items-center gap-3">
@@ -80,7 +77,6 @@ export default {
     axios.get(process.env.VUE_APP_API_URL + '/leagues')
     .then(response => {
       const result = response.data.response
-      console.log(result);
       this.leagues = result
       this.total = result.length
     })

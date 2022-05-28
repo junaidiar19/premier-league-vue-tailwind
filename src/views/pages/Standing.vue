@@ -8,8 +8,8 @@
             <h5 class="font-semibold text-2xl text-primary">English Premier League</h5>
             <p class="text-gray-700">Standings</p>
           </div>
-          <div>
-            <select>
+          <div class="hidden md:block">
+            <select @change="changeSeason($event)">
               <option value="2021">2021-2022 Season</option>
               <option value="2020">2020-2021 Season</option>
               <option value="2019">2019-2020 Season</option>
@@ -19,8 +19,17 @@
       </div>
     </div>
     <div class="bg-section">
-      <div class="container py-4 md:py-8">
-        <div class="table-responsive card-table">
+      <div class="container py-4 md:py-8 card-section">
+
+        <div class="md:hidden mb-4 md:mb-0">
+          <select @change="changeSeason($event)" class="custom-select">
+            <option value="2021">2021-2022 Season</option>
+            <option value="2020">2020-2021 Season</option>
+            <option value="2019">2019-2020 Season</option>
+          </select>
+        </div>
+
+        <div class="table-responsive card-table" :class="loading ? 'loading-table' : '' ">
           <table class="table">
               <thead>
                 <tr>
@@ -33,13 +42,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-if="loading">
-                  <td colspan="7" align="center" class="px-6 py-4 text-gray-500">Loading...</td>
-                </tr>
                 <tr v-for="(item, index) in standings" v-bind:key="index">
                   <td v-if="item.description === 'Promotion - Champions League (Group Stage)'" class="border-l-4 border-blue-500" width="10">{{ item.rank }}</td>
-                  <td v-else-if="item.description === 'Promotion - Europa League (Group Stage)'" class="border-l-4 border-green-500" width="10">{{ item.rank }}</td>
-                  <td v-else-if="item.description === 'Promotion - Europa Conference League (Qualification)'" class="border-l-4 border-yellow-400" width="10">{{ item.rank }}</td>
+                  <td v-else-if="item.description === 'Promotion - Europa League (Group Stage)'" class="border-l-4 border-yellow-400" width="10">{{ item.rank }}</td>
+                  <td v-else-if="item.description === 'Promotion - Europa Conference League (Qualification)'" class="border-l-4 border-green-500" width="10">{{ item.rank }}</td>
                   <td v-else-if="item.description === 'Relegation - Championship'" class="border-l-4 border-red-500" width="10">{{ item.rank }}</td>
                   <td v-else width="10">{{ item.rank }}</td>
                   <td class="!pl-0">
@@ -52,7 +58,7 @@
                   <td>{{ item.all.win }}</td>
                   <td>{{ item.all.draw }}</td>
                   <td>{{ item.all.lose }}</td>
-                  <td>{{ item.points }}</td>
+                  <td class="font-semibold">{{ item.points }}</td>
                 </tr>
               </tbody>
           </table>
@@ -84,6 +90,10 @@ export default {
   },
   data () {
     return {
+      params: {
+        season: 2021,
+        league: 39
+      },
       standings: [],
       loading: true,
       qualifications: [
@@ -107,17 +117,31 @@ export default {
     }
   },
   mounted () {
-    axios.get(process.env.VUE_APP_API_URL + '/standings')
-    .then(response => {
+    this.getStandings()
+  },
+  methods: {
+    changeSeason (event) {
+      this.params = {
+        season: event.target.value,
+        league: 39
+      }
+
+      this.getStandings()
+    },
+    getStandings () {
+      axios.get(process.env.VUE_APP_API_URL + '/standings', {
+        params: this.params
+      })
+      .then(response => {
         const data = response.data.response[0].league.standings[0]
-        console.log(data);
         this.standings = data
+        this.loading = false
       })
       .catch(error => {
         console.log(error)
         this.errored = true
       })
-      .finally(() => this.loading = false)
-  },
+    }
+  }
 }
 </script>

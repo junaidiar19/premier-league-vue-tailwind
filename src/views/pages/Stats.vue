@@ -6,10 +6,10 @@
         <div class="flex justify-between items-center">
           <div>
             <h5 class="font-semibold text-2xl text-primary">English Premier League</h5>
-            <p class="text-gray-700">Statistic</p>
+            <p class="text-gray-700">Stats</p>
           </div>
-          <div>
-            <select>
+          <div class="hidden md:block">
+            <select @change="changeSeason($event)">
               <option value="2021">2021-2022 Season</option>
               <option value="2020">2020-2021 Season</option>
               <option value="2019">2019-2020 Season</option>
@@ -20,17 +20,26 @@
     </div>
     <div class="bg-section">
       <div class="container py-4 md:py-8">
+
+        <div class="md:hidden mb-4 md:mb-0">
+          <select @change="changeSeason($event)" class="custom-select">
+            <option value="2021">2021-2022 Season</option>
+            <option value="2020">2020-2021 Season</option>
+            <option value="2019">2019-2020 Season</option>
+          </select>
+        </div>
+
         <div class="row">
           <div class="md:col-6">
             <p class="font-semibold text-primary mb-3">TOP SCORERS</p>
 
-            <ScorersView />
+            <ScorersView :season="params.season" />
 
           </div>
           <div class="md:col-6">
             <p class="font-semibold text-primary mb-3">TOP ASSISTS</p>
 
-            <AssistsView/>
+            <AssistsView :season="params.season"/>
 
           </div>
         </div>
@@ -57,10 +66,22 @@ export default {
   },
   data() {
     return {
+      params: {
+        season: 2021,
+        league: 39
+      },
       scorers: [],
       assists: [],
       loading: true
     }
   },
+  methods: {
+    changeSeason (event) {
+      this.params = {
+        season: event.target.value,
+        league: 39
+      }
+    },
+  }
 }
 </script>

@@ -3,7 +3,20 @@
     <Header />
     <div class="py-5 border-b shadow-md">
       <div class="container">
-        <div class="flex justify-between items-center">
+
+        <!-- skeloton -->
+        <div class="flex justify-between items-center animate-pulse" :class="team.name !== '' ? 'hidden' : '' ">
+          <div class="flex items-center gap-3">
+            <div class="h-14 w-14 rounded-full bg-gray-200"></div>
+            <div class="grid gap-y-2">
+              <div class="bg-gray-200 h-4 w-48 rounded-lg"></div>
+              <div class="bg-gray-200 h-3 w-24 rounded-lg"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- real -->
+        <div class="flex justify-between items-center" :class="team.name === '' ? 'hidden' : '' ">
           <div class="flex items-center gap-3">
             <img :src="team.logo" class="h-14 w-14 rounded-full" alt="">
             <div>
@@ -11,14 +24,13 @@
               <p class="text-gray-700">Players</p>
             </div>
           </div>
-          <div>
-          </div>
         </div>
+
       </div>
     </div>
     <div class="bg-section">
       <div class="container py-4 md:py-8">
-        <div class="table-responsive card-table">
+        <div class="table-responsive card-table" :class="loading ? 'loading-table' : '' ">
           <table class="table">
             <thead>
               <tr>
@@ -29,9 +41,6 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-if="loading">
-                <td colspan="4" align="center" class="px-6 py-4 text-gray-500">Loading...</td>
-              </tr>
               <tr v-for="(item, index) in players.players" v-bind:key="index">
                 <td>
                   <div class="flex items-center gap-2">
@@ -78,7 +87,6 @@ export default {
     axios.get(process.env.VUE_APP_API_URL + '/players/squads?team=50')
     .then(response => {
       const result = response.data.response[0]
-      console.log(result.players);
       this.players = result
       this.team.name = result.team.name
       this.team.logo = result.team.logo

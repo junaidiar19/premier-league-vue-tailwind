@@ -37,3 +37,15 @@
 .card-table {
   @apply rounded-lg shadow hover:shadow-md transition-all mb-8;
 }
+
+.loading-table {
+  @apply animate-pulse bg-white h-screen;
+}
+
+.loading-table table thead {
+  @apply hidden;
+}
+
+.custom-select {
+  @apply bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg w-full py-3 px-2;
+}

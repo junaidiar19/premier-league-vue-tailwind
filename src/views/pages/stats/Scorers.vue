@@ -1,5 +1,5 @@
 <template>
-<div class="table-responsive card-table">
+<div class="table-responsive card-table" :class="loading ? 'loading-table' : '' ">
   <table class="table">
     <thead>
       <tr>
@@ -8,9 +8,6 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-if="loading">
-        <td colspan="2" align="center" class="px-6 py-4 text-gray-500">Loading...</td>
-      </tr>
       <tr v-for="(item, index) in data" v-bind:key="index">
         <td>
           <div class="flex items-top gap-5">
@@ -36,6 +33,7 @@ import axios from 'axios'
 
   export default {
     name: 'ScorersView',
+    props: ['season'],
     data () {
       return {
         data: [],
@@ -43,17 +41,25 @@ import axios from 'axios'
       }
     },
     mounted () {
-    axios.get(process.env.VUE_APP_API_URL + '/players/topscorers')
-    .then(response => {
-        const result = response.data.response
-        console.log(result);
-        this.data = result
-      })
-      .catch(error => {
-        console.log(error)
-        this.errored = true
-      })
-      .finally(() => this.loading = false)
-  },
+      this.getScorers();
+    },
+    methods: {
+      getScorers () {
+        axios.get(process.env.VUE_APP_API_URL + '/players/topscorers', {
+          params: {
+            season: this.season,
+            league: 39
+          }
+        })
+        .then(response => {
+          const result = response.data.response
+          this.data = result
+        })
+        .catch(error => {
+          console.log(error)
+        })
+        .finally(() => this.loading = false)
+      }
+    }
   }
 </script>

@@ -1,14 +1,15 @@
 <template>
     <section class="w-full border-box transition-all duration-500 linear py-8 border-b bg-primary">
     <div class="container">
-        <div class="mx-auto flex flex-wrap flex-row items-center justify-between">
+        <div class="mx-auto flex flex-wrap flex-row items-center gap-3 justify-center">
             <router-link class="flex font-medium items-center" to="/">
                 <img src="logo.png" class="h-10 md:h-14" alt="">
             </router-link>
 
             <p class="md:hidden text-white">English Premier League</p>
 
-            <label for="menu-toggle-1-2" class="cursor-pointer lg:hidden block">
+            <div></div>
+            <label for="menu-toggle-1-2" class="cursor-pointer hidden">
                 <svg
                 class="w-6 h-6"
                 fill="none"
