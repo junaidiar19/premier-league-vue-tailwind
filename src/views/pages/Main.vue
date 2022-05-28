@@ -1,25 +1,20 @@
 <template>
-    <section class="h-full w-full border-box transition-all duration-500 linear py-12">
+    <section class="h-full w-full border-box transition-all duration-500 linear py-12 dark:bg-primary">
     <div style="font-family: 'Poppins', sans-serif">
         <!-- Hero-header-2-3 -->
         <div class="container">
-          <div class="row">
-            <div class="col-7">
+          <div class="row justify-center md:justify-between">
+            <div class="md:col-7 order-2 md:order-1 text-center md:text-left">
               <p class="mb-5 leading-relaxed font-semibold text-sm text-red-600">
                   Premier League
               </p>
 
-              <h1 class="text-5xl text-primary font-semibold leading-normal mb-5">
+              <h1 class="md:text-5xl text-primary font-semibold md:leading-tight mb-5 dark:text-slate-100">
                   The Result Standing & Match of English Premier League
               </h1>
 
-
-              <div class="flex items-center gap-3">
-                <button class="inline-flex font-semibold text-white text-base py-4 px-6 rounded-xl mb-4 lg:mb-0 md:mb-0 focus:outline-none box-shadow-header-2-3" style="background: #524eee;">
-                    Match Result
-                </button>
-  
-                <router-link to="/standings" class="font-normal text-gray-600 text-base py-4 px-6 rounded-xl bg-transparent border border-gray-400">
+              <div class="flex items-center justify-center md:justify-start gap-3">
+                <router-link to="/standings" class="md:mr-auto dark:text-slate-300 dark:hover:text-slate-100 font-normal text-gray-600 text-base py-4 px-6 rounded-xl bg-transparent border border-gray-400">
                     <div class="flex items-center">
                         <img style="height: 20px;" class="mr-2" src="img/icon-1.png" alt="" />
                         Standings
@@ -27,7 +22,7 @@
                 </router-link>
               </div>
             </div>
-            <div class="col-5">
+            <div class="md:col-5 order-1 md:order-2">
               <img id="hero-header-2-3" src="img/premier-league.png" alt="" />
             </div>
           </div>

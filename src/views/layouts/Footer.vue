@@ -20,7 +20,7 @@
     </router-link>
 </div>
 
-<footer class="pt-12 md:pb-12 pb-20 lg:px-24 md:px-16 sm:px-8 px-4 bg-primary">
+<footer class="pt-12 md:pb-12 pb-[100px] lg:px-24 md:px-16 sm:px-8 px-4 bg-primary">
     <div class="container mx-auto text-center">
         <p class="text-gray-400">Copyright © 2021 Handle Back Tea Labs</p>
     </div>

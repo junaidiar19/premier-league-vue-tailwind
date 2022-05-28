@@ -31,23 +31,17 @@
 <script>
   export default {
     name: 'ScorersView',
-    props: [{
-      name: 'loading',
-      type: Boolean,
-      default: false,
-    }, {
-      name: 'scorers',
-      type: Array,
-      default: () => [],
-    }],
+    props: ['loading', 'scorers'],
     data () {
       return {
         data: [],
       }
     },
     mounted () {
-      this.data = this.scorers;
-      console.log(this.scorers)
+      setTimeout(() => {
+        const convert = JSON.parse(JSON.stringify(this.scorers))
+        this.data = convert;
+      }, 100);
     }
   }
 </script>

@@ -105,11 +105,15 @@ export default {
       .then(response => {
         const result = response.data.response
         this.scorers = result
+
+        setTimeout(() => {
+          this.loading = false
+        }, 100)
+
       })
       .catch(error => {
         console.log(error)
       })
-      .finally(() => this.loading = false)
     },
     getAssists () {
       axios.get(process.env.VUE_APP_API_URL + '/players/topassists', {
@@ -118,11 +122,15 @@ export default {
       .then(response => {
         const result = response.data.response
         this.assists = result
+
+        setTimeout(() => {
+          this.loading = false
+        }, 100)
+        
       })
       .catch(error => {
         console.log(error)
       })
-      .finally(() => this.loading = false)
     },
   }
 }

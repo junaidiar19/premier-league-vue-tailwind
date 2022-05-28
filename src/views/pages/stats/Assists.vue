@@ -31,22 +31,17 @@
 <script>
   export default {
     name: 'AssistsView',
-    props: [{
-      name: 'loading',
-      type: Boolean,
-      default: false,
-    }, {
-      name: 'scorers',
-      type: Array,
-      default: () => [],
-    }],
+    props: ['loading', 'assists'],
     data () {
       return {
         data: [],
       }
     },
     mounted () {
-      this.data = this.assists;
+      setTimeout(() => {
+        const convert = JSON.parse(JSON.stringify(this.assists))
+        this.data = convert;
+      }, 100);
     }
   }
 </script>

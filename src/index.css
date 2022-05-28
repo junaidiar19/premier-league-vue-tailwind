@@ -75,7 +75,7 @@
 }
 
 .bottom-menu .nav-link {
-  @apply flex flex-col items-center justify-center grow text-gray-400 text-xs my-4;
+  @apply flex flex-col items-center justify-center grow text-gray-400 text-sm my-5;
 }
 
 .bottom-menu .active {
