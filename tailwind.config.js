@@ -7,6 +7,9 @@ module.exports = {
         padding: "4rem",
       },
     },
+    fontFamily: {
+      nunito: ["poppins", "sans-serif"],
+    },
   },
   plugins: [],
 };
