@@ -1,4 +1,5 @@
 module.exports = {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -10,7 +11,9 @@ module.exports = {
         warning: "#ffdda9",
         primary: "#141432",
         muted: "#707092",
-        section: "#f3f6f9",
+        light: "#f3f6f9",
+        "primary-1": "#292952",
+        "primary-2": "#4c4c6d",
       },
     },
     fontFamily: {

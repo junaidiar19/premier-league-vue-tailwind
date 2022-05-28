@@ -1,12 +1,12 @@
 <template>
   <div>
     <Header />
-    <div class="py-5 border-b shadow-md bg-white">
+    <div class="page-title">
       <div class="container">
         <div class="flex justify-between items-center">
           <div>
-            <h5 class="font-semibold text-2xl text-primary">English Premier League</h5>
-            <p class="text-gray-700">Standings</p>
+            <h5 class="font-semibold text-2xl text-primary">Standings</h5>
+            <p class="text-gray-700">Show you the current standings</p>
           </div>
           <div class="hidden md:block">
             <select @change="changeSeason($event)">
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="bg-section">
-      <div class="container py-4 md:py-8 card-section">
+      <div class="card-section">
 
         <div class="md:hidden mb-4 md:mb-0">
           <select @change="changeSeason($event)" class="custom-select">
@@ -63,11 +63,11 @@
               </tbody>
           </table>
         </div>
-        <div class="p-4 rounded-lg bg-white shadow">
-          <p class="font-semibold mb-2">Qualification/Relegation</p>
+        <div class="p-4 rounded-lg bg-white shadow dark:shadow-none dark:border dark:border-primary-2 dark:bg-primary-1">
+          <p class="font-semibold mb-2 dark:text-gray-100">Qualification/Relegation</p>
           <div class="flex items-center gap-2" v-for="(item, index) in qualifications" v-bind:key="index">
             <div :class="item.color" class="p-1"></div>
-            <p class="text-sm">{{ item.description }}</p>
+            <p class="text-sm dark:text-gray-200 leading-relaxed">{{ item.description }}</p>
           </div>
         </div>
       </div>

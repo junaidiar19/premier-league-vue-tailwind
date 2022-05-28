@@ -1,12 +1,12 @@
 <template>
   <div>
     <Header />
-    <div class="py-5 border-b shadow-md">
+    <div class="page-title">
       <div class="container">
         <div class="flex justify-between items-center">
           <div>
-            <h5 class="font-semibold text-2xl text-primary">English Premier League</h5>
-            <p class="text-gray-700">Stats</p>
+            <h5 class="font-semibold text-2xl text-primary">Stats</h5>
+            <p class="text-gray-700">It's about the most goals and assists</p>
           </div>
           <div class="hidden md:block">
             <select @change="changeSeason($event)">
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="bg-section">
-      <div class="container py-4 md:py-8">
+      <div class="card-section">
 
         <div class="md:hidden mb-4 md:mb-0">
           <select @change="changeSeason($event)" class="custom-select">
@@ -31,13 +31,13 @@
 
         <div class="row">
           <div class="md:col-6">
-            <p class="font-semibold text-primary mb-3">TOP SCORERS</p>
+            <p class="font-semibold text-primary mb-3 dark:text-slate-100">TOP SCORERS</p>
 
             <ScorersView :season="params.season" />
 
           </div>
           <div class="md:col-6">
-            <p class="font-semibold text-primary mb-3">TOP ASSISTS</p>
+            <p class="font-semibold text-primary mb-3 dark:text-slate-100">TOP ASSISTS</p>
 
             <AssistsView :season="params.season"/>
 

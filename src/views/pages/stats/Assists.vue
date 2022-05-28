@@ -13,10 +13,10 @@
           <div class="flex items-top gap-5">
             <p class="">{{ index+1 }}</p>
             <div>
-              <p class="text-primary mb-1">{{ item.player.name }}</p>
+              <p class="text-primary mb-1 dark:text-slate-100">{{ item.player.name }}</p>
               <div class="flex items-center gap-1">
                 <img :src="item.statistics[0].team.logo" class="h-4" alt="">
-                <p class="text-xs text-muted">{{ item.statistics[0].team.name }}</p>
+                <p class="text-xs text-muted dark:text-slate-400">{{ item.statistics[0].team.name }}</p>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <div class="py-5 border-b shadow-md">
+    <div class="page-title">
       <div class="container">
         <div class="flex justify-between items-center">
           <div>
@@ -14,8 +14,8 @@
       </div>
     </div>
     <div class="bg-section">
-      <div class="container py-4 md:py-8">
-        <p class="font-semibold mb-3">Total: {{ total }}</p>
+      <div class="card-section">
+        <p class="font-semibold mb-3 dark:text-slate-400">Total: {{ total }}</p>
         <div class="table-responsive card-table" :class="loading ? 'loading-table' : '' ">
           <table class="table">
             <thead>

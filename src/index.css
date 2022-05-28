@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-section {
+  @apply bg-light dark:bg-primary;
+}
+
+.page-title {
+  @apply py-5 border-b shadow-md bg-white dark:bg-primary dark:border-b-primary;
+}
+
+.page-title h5 {
+  @apply dark:text-white;
+}
+
+.page-title p {
+  @apply dark:text-gray-400;
+}
+
+.page-title select {
+  @apply dark:p-3 dark:border dark:rounded-lg dark:bg-primary dark:text-gray-300;
+}
+
 .nav-link {
   @apply cursor-pointer transition text-gray-400 hover:text-warning;
 }
@@ -11,23 +31,23 @@
 }
 
 .table {
-  @apply min-w-full divide-y divide-gray-200 text-left;
+  @apply min-w-full divide-y divide-gray-200 text-left dark:divide-gray-700;
 }
 
 .table thead {
-  @apply bg-gray-50;
+  @apply bg-gray-50 dark:bg-primary;
 }
 
 .table th {
-  @apply px-6 py-4 text-left text-xs font-bold text-primary uppercase tracking-wider;
+  @apply px-6 py-4 text-left text-xs font-bold text-primary uppercase tracking-wider dark:text-white;
 }
 
 .table td {
-  @apply px-6 py-4 whitespace-nowrap text-gray-700;
+  @apply px-6 py-4 whitespace-nowrap text-gray-700 dark:text-slate-200;
 }
 
 .table tbody {
-  @apply bg-white divide-y divide-gray-200;
+  @apply bg-white divide-y divide-gray-200 dark:bg-primary dark:divide-slate-700;
 }
 
 .table-responsive {
@@ -35,11 +55,11 @@
 }
 
 .card-table {
-  @apply rounded-lg shadow hover:shadow-md transition-all mb-8;
+  @apply rounded-lg shadow hover:shadow-md transition-all mb-8 dark:shadow-none dark:border dark:border-slate-600;
 }
 
 .loading-table {
-  @apply animate-pulse bg-white h-screen;
+  @apply animate-pulse bg-white h-screen dark:bg-primary-1;
 }
 
 .loading-table table thead {
@@ -47,5 +67,29 @@
 }
 
 .custom-select {
-  @apply bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg w-full py-3 px-2;
+  @apply bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg w-full py-3 px-2 focus:outline-none focus:border-primary-1 dark:bg-primary-1 dark:text-slate-200 dark:border-slate-600;
+}
+
+.bottom-menu {
+  @apply fixed bottom-0 inset-x-0 w-full md:hidden flex bg-primary border-t border-gray-600;
+}
+
+.bottom-menu .nav-link {
+  @apply flex flex-col items-center justify-center grow text-gray-400 text-xs my-4;
+}
+
+.bottom-menu .active {
+  @apply text-warning;
+}
+
+.card-section {
+  @apply container py-4 md:py-8 dark:py-4;
+}
+
+.btn-mode {
+  @apply px-4 py-2 rounded-lg border-primary-2 bg-primary-1;
+}
+
+.btn-mode i {
+  @apply text-slate-100;
 }

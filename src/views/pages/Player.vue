@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <div class="py-5 border-b shadow-md">
+    <div class="page-title">
       <div class="container">
 
         <!-- skeloton -->
@@ -21,7 +21,7 @@
             <img :src="team.logo" class="h-14 w-14 rounded-full" alt="">
             <div>
               <h5 class="font-semibold text-2xl text-primary">{{ team.name }}</h5>
-              <p class="text-gray-700">Players</p>
+              <p class="text-gray-700">List of Players</p>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="bg-section">
-      <div class="container py-4 md:py-8">
+      <div class="card-section">
         <div class="table-responsive card-table" :class="loading ? 'loading-table' : '' ">
           <table class="table">
             <thead>
