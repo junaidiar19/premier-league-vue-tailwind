@@ -10,6 +10,7 @@ module.exports = {
         warning: "#ffdda9",
         primary: "#141432",
         muted: "#707092",
+        section: "#f3f6f9",
       },
     },
     fontFamily: {

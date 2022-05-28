@@ -15,17 +15,25 @@
 }
 
 .table thead {
-  @apply bg-gray-50;
+  @apply bg-white;
 }
 
 .table th {
-  @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+  @apply px-6 py-4 text-left text-xs font-bold text-primary uppercase tracking-wider;
 }
 
 .table td {
-  @apply px-6 py-4 whitespace-nowrap;
+  @apply px-6 py-4 whitespace-nowrap text-gray-700;
 }
 
 .table tbody {
   @apply bg-white divide-y divide-gray-200;
+}
+
+.table-responsive {
+  @apply overflow-scroll md:overflow-hidden;
+}
+
+.card-table {
+  @apply rounded-lg shadow hover:shadow-md transition-all mb-8;
 }

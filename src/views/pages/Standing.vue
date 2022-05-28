@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <div class="py-5 border-b shadow-md">
+    <div class="py-5 border-b shadow-md bg-white">
       <div class="container">
         <div class="flex justify-between items-center">
           <div>
@@ -9,13 +9,18 @@
             <p class="text-gray-700">Standings</p>
           </div>
           <div>
-            <p class="">2021-2022 Season</p>
+            <select>
+              <option value="2021">2021-2022 Season</option>
+              <option value="2020">2020-2021 Season</option>
+              <option value="2019">2019-2020 Season</option>
+            </select>
           </div>
         </div>
       </div>
     </div>
-    <div class="container py-12">
-        <div class="shadow overflow-scroll md:overflow-hidden border-b border-gray-200 rounded-lg">
+    <div class="bg-section">
+      <div class="container py-4 md:py-8">
+        <div class="table-responsive card-table">
           <table class="table">
               <thead>
                 <tr>
@@ -28,7 +33,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr class="border-l-4 border-blue-500">
                   <td width="10">1</td>
                   <td>
                     <div class="flex items-center gap-3">
@@ -42,7 +47,7 @@
                   <td>3</td>
                   <td>93</td>
                 </tr>
-                <tr>
+                <tr class="border-l-4 border-yellow-400">
                   <td width="10">2</td>
                   <td>
                     <div class="flex items-center gap-3">
@@ -56,7 +61,7 @@
                   <td>3</td>
                   <td>93</td>
                 </tr>
-                <tr>
+                <tr class="border-l-4">
                   <td width="10">3</td>
                   <td>
                     <div class="flex items-center gap-3">
@@ -72,6 +77,26 @@
                 </tr>
               </tbody>
           </table>
+        </div>
+        <div class="p-4 rounded-lg bg-white shadow">
+          <p class="font-semibold mb-2">Qualification/Relegation</p>
+          <div class="flex items-center gap-2">
+            <div class="bg-blue-500 p-1"></div>
+            <p class="text-sm">UEFA Champions League group stage</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="bg-yellow-400 p-1"></div>
+            <p class="text-sm">Europa League group stage</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="bg-green-500 p-1"></div>
+            <p class="text-sm">Europa Conference group stage</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="bg-red-500 p-1"></div>
+            <p class="text-sm">Relegation</p>
+          </div>
+        </div>
       </div>
     </div>
     <Footer />

@@ -3,8 +3,10 @@
     <div class="container">
         <div class="mx-auto flex flex-wrap flex-row items-center justify-between">
             <router-link class="flex font-medium items-center" to="/">
-                <img src="logo.png" class="img-header" alt="">
+                <img src="logo.png" class="h-10 md:h-14" alt="">
             </router-link>
+
+            <p class="md:hidden text-white">English Premier League</p>
 
             <label for="menu-toggle-1-2" class="cursor-pointer lg:hidden block">
                 <svg
@@ -27,10 +29,10 @@
             
             <div class="hidden lg:flex lg:items-center lg:w-auto w-full lg:ml-auto lg:mr-auto flex-wrap items-center text-base justify-center" id="menu-1-2">
                 <nav class="lg:space-x-12 space-x-0 lg:flex items-center justify-between text-base pt-8 lg:pt-0 lg:space-y-0">
-                    <router-link class="nav-link" to="/matches">Matches</router-link>
-                    <router-link class="nav-link" to="/standings">Standings</router-link>
+                  <router-link class="nav-link" to="/standings">Standings</router-link>
                     <router-link class="nav-link" to="/stats">Stats</router-link>
                     <router-link class="nav-link" to="/players">Players</router-link>
+                    <router-link class="nav-link" to="/league">Leagues</router-link>
                 </nav>
             </div>
             
