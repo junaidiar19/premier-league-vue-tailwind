@@ -29,37 +29,24 @@
 </template>
 
 <script>
-import axios from 'axios'
-
   export default {
     name: 'AssistsView',
-    props: ['season'],
+    props: [{
+      name: 'loading',
+      type: Boolean,
+      default: false,
+    }, {
+      name: 'scorers',
+      type: Array,
+      default: () => [],
+    }],
     data () {
       return {
         data: [],
-        loading: true
       }
     },
     mounted () {
-      this.getAssists();
-    },
-    methods: {
-      getAssists () {
-        axios.get(process.env.VUE_APP_API_URL + '/players/topassists', {
-          params: {
-            season: this.season,
-            league: 39
-          }
-        })
-        .then(response => {
-          const result = response.data.response
-          this.data = result
-        })
-        .catch(error => {
-          console.log(error)
-        })
-        .finally(() => this.loading = false)
-      }
+      this.data = this.assists;
     }
   }
 </script>

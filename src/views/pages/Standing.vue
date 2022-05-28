@@ -125,12 +125,17 @@ export default {
         season: event.target.value,
         league: 39
       }
-
+      this.loading = true;
+      this.standings = [];
       this.getStandings()
     },
     getStandings () {
       axios.get(process.env.VUE_APP_API_URL + '/standings', {
-        params: this.params
+        params: this.params,
+        headers: {
+          'x-rapidapi-host': process.env.VUE_APP_API_HOST,
+          'x-rapidapi-key': process.env.VUE_APP_API_KEY,
+        }
       })
       .then(response => {
         const data = response.data.response[0].league.standings[0]

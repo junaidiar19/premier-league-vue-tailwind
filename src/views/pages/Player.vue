@@ -84,7 +84,12 @@ export default {
     }
   },
   mounted () {
-    axios.get(process.env.VUE_APP_API_URL + '/players/squads?team=50')
+    axios.get(process.env.VUE_APP_API_URL + '/players/squads?team=50', {
+      headers: {
+        'x-rapidapi-host': process.env.VUE_APP_API_HOST,
+        'x-rapidapi-key': process.env.VUE_APP_API_KEY,
+      }
+    })
     .then(response => {
       const result = response.data.response[0]
       this.players = result

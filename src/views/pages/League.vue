@@ -74,7 +74,15 @@ export default {
     }
   },
   mounted () {
-    axios.get(process.env.VUE_APP_API_URL + '/leagues')
+    axios.get(process.env.VUE_APP_API_URL + '/leagues', {
+        params: {
+          type: 'league'
+        },
+        headers: {
+          'x-rapidapi-host': process.env.VUE_APP_API_HOST,
+          'x-rapidapi-key': process.env.VUE_APP_API_KEY,
+        }
+    })
     .then(response => {
       const result = response.data.response
       this.leagues = result

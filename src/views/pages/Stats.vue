@@ -33,13 +33,13 @@
           <div class="md:col-6">
             <p class="font-semibold text-primary mb-3 dark:text-slate-100">TOP SCORERS</p>
 
-            <ScorersView :season="params.season" />
+            <ScorersView :loading="loading" :scorers="scorers" />
 
           </div>
           <div class="md:col-6">
             <p class="font-semibold text-primary mb-3 dark:text-slate-100">TOP ASSISTS</p>
 
-            <AssistsView :season="params.season"/>
+            <AssistsView :loading="loading" :assists="assists"/>
 
           </div>
         </div>
@@ -55,6 +55,7 @@ import Header from '@/views/layouts/Header.vue'
 import Footer from '@/views/layouts/Footer.vue'
 import ScorersView from '@/views/pages/stats/Scorers.vue'
 import AssistsView from '@/views/pages/stats/Assists.vue'
+import axios from 'axios'
 
 export default {
   name: 'StatsView',
@@ -66,14 +67,22 @@ export default {
   },
   data() {
     return {
+      scorers: [],
+      assists: [],
+      loading: true,
       params: {
         season: 2021,
         league: 39
       },
-      scorers: [],
-      assists: [],
-      loading: true
+      headers: {
+          'x-rapidapi-host': process.env.VUE_APP_API_HOST,
+          'x-rapidapi-key': process.env.VUE_APP_API_KEY,
+        }
     }
+  },
+  mounted() {
+    this.getScorers()
+    this.getAssists()
   },
   methods: {
     changeSeason (event) {
@@ -81,6 +90,39 @@ export default {
         season: event.target.value,
         league: 39
       }
+
+      this.loading = true;
+      this.scorers = [];
+      this.assists = [];
+
+      this.getScorers();
+      this.getAssists();
+    },
+    getScorers () {
+      axios.get(process.env.VUE_APP_API_URL + '/players/topscorers', {
+        params: this.params, headers: this.headers
+      })
+      .then(response => {
+        const result = response.data.response
+        this.scorers = result
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      .finally(() => this.loading = false)
+    },
+    getAssists () {
+      axios.get(process.env.VUE_APP_API_URL + '/players/topassists', {
+        params: this.params, headers: this.headers
+      })
+      .then(response => {
+        const result = response.data.response
+        this.assists = result
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      .finally(() => this.loading = false)
     },
   }
 }
