@@ -5,3 +5,9 @@
   </nav> -->
   <router-view/>
 </template>
+
+<style scoped>
+#app {
+  flex-grow: 1;
+}
+</style>

@@ -1,46 +1,36 @@
 <template>
-    <section class="h-full w-full border-box transition-all duration-500 linear" style="background-color: #141432">
+    <section class="h-full w-full border-box transition-all duration-500 linear py-12">
     <div style="font-family: 'Poppins', sans-serif">
         <!-- Hero-header-2-3 -->
-        <div>
-            <div class="mx-auto flex pt-12 pb-16 lg:pb-20 lg:px-24 md:px-16 sm:px-8 px-8 lg:flex-row flex-col">
-                <!-- Left Column -->
-                <div class="lg:flex-grow lg:w-1/2 flex flex-col lg:items-start lg:text-left mb-3 md:mb-12 lg:mb-0 items-center text-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-7">
+              <p class="mb-5 leading-relaxed font-semibold text-sm text-red-600">
+                  Premier League
+              </p>
 
-                    <p class="mb-8 leading-relaxed font-semibold text-sm" style="color: #fb6262">
-                        Premier League
-                    </p>
+              <h1 class="text-5xl text-primary font-semibold leading-normal mb-5">
+                  The Result Standing & Match of English Premier League
+              </h1>
 
-                    <h1 class="lg:block hidden title-font sm:text-5xl lg:text-6xl text-4xl mb-8 font-semibold sm:leading-tight" style="color: #cbcbd2; line-height: 1.2">
-                        The best place <br/>
-                        to support your team here
-                    </h1>
 
-                    <h1 class="lg:hidden block title-font sm:text-5xl lg:text-6xl text-4xl mb-8 lg::px-10 md:px-10 sm:px-6 px-0 font-semibold sm:leading-tight" style="color: #cbcbd2; line-height: 1.2">
-                        The best place to support your team here
-                    </h1>
-
-                    <div class="inline-block items-center mx-auto lg:mx-0 lg:flex justify-center lg:space-x-8 md:space-x-2 sm:space-x-3 space-x-0">
-
-                        <button class="inline-flex font-semibold text-white text-base py-4 px-6 rounded-xl mb-4 lg:mb-0 md:mb-0 focus:outline-none box-shadow-header-2-3" style="background: #524eee; font-family: 'Poppins', sans-serif;">
-                            Match Result
-                        </button>
-
-                        <button class="btn-outline-header-2-3 font-normal text-black text-base py-4 px-6 rounded-xl focus:outline-none bg-transparent rounded hover:border-transparent" style="font-family: 'Poppins', sans-serif">
-                            <div class="flex items-center">
-                                <img style="height: 20px;" class="mr-2" src="img/icon-1.png" alt="" />
-                                Tables
-                            </div>
-                        </button>
+              <div class="flex items-center gap-3">
+                <button class="inline-flex font-semibold text-white text-base py-4 px-6 rounded-xl mb-4 lg:mb-0 md:mb-0 focus:outline-none box-shadow-header-2-3" style="background: #524eee;">
+                    Match Result
+                </button>
+  
+                <router-link to="/standings" class="font-normal text-gray-600 text-base py-4 px-6 rounded-xl bg-transparent border border-gray-400">
+                    <div class="flex items-center">
+                        <img style="height: 20px;" class="mr-2" src="img/icon-1.png" alt="" />
+                        Standings
                     </div>
-
-                </div>
-
-                <!-- Right Column -->
-                <div class="w-full lg:w-1/2 text-center justify-center flex pr-0">
-                    <img id="hero-header-2-3" src="img/premier-league.png" alt="" />
-                </div>
+                </router-link>
+              </div>
             </div>
+            <div class="col-5">
+              <img id="hero-header-2-3" src="img/premier-league.png" alt="" />
+            </div>
+          </div>
         </div>
     </div>
 </section>
