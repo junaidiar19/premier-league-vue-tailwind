@@ -33,13 +33,65 @@
           <div class="md:col-6">
             <p class="font-semibold text-primary mb-3 dark:text-slate-100">TOP SCORERS</p>
 
-            <ScorersView :loading="loading" :scorers="scorers" />
+            <div class="table-responsive card-table" :class="loading ? 'loading-table' : '' ">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Player</th>
+                    <th>Goals</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(item, index) in scorers" v-bind:key="index">
+                    <td>
+                      <div class="flex items-top gap-5">
+                        <p class="">{{ index+1 }}</p>
+                        <div>
+                          <p class="text-primary mb-1 dark:text-slate-100">{{ item.player.name }}</p>
+                          <div class="flex items-center gap-1">
+                            <img :src="item.statistics[0].team.logo" class="h-4" alt="">
+                            <p class="text-xs text-muted dark:text-slate-400">{{ item.statistics[0].team.name }}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>{{ item.statistics[0].goals.total }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
           </div>
           <div class="md:col-6">
             <p class="font-semibold text-primary mb-3 dark:text-slate-100">TOP ASSISTS</p>
 
-            <AssistsView :loading="loading" :assists="assists"/>
+            <div class="table-responsive card-table" :class="loading ? 'loading-table' : '' ">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Player</th>
+                    <th>Assist</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(item, index) in assists" v-bind:key="index">
+                    <td>
+                      <div class="flex items-top gap-5">
+                        <p class="">{{ index+1 }}</p>
+                        <div>
+                          <p class="text-primary mb-1 dark:text-slate-100">{{ item.player.name }}</p>
+                          <div class="flex items-center gap-1">
+                            <img :src="item.statistics[0].team.logo" class="h-4" alt="">
+                            <p class="text-xs text-muted dark:text-slate-400">{{ item.statistics[0].team.name }}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>{{ item.statistics[0].goals.assists }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
           </div>
         </div>
@@ -53,8 +105,6 @@
 // @ is an alias to /src
 import Header from '@/views/layouts/Header.vue'
 import Footer from '@/views/layouts/Footer.vue'
-import ScorersView from '@/views/pages/stats/Scorers.vue'
-import AssistsView from '@/views/pages/stats/Assists.vue'
 import axios from 'axios'
 
 export default {
@@ -62,8 +112,6 @@ export default {
   components: {
     Header,
     Footer,
-    ScorersView,
-    AssistsView
   },
   data() {
     return {
@@ -106,9 +154,7 @@ export default {
         const result = response.data.response
         this.scorers = result
 
-        setTimeout(() => {
-          this.loading = false
-        }, 100)
+        this.loading = false
 
       })
       .catch(error => {
