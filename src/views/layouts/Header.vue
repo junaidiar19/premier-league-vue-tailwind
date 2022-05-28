@@ -37,7 +37,7 @@
             </div>
             
             <div class="hidden lg:flex lg:items-center lg:w-auto w-full mt-6 lg:mt-0" id="menu-1-2">
-                <router-link to="/login" class="bg-warning items-center border-0 py-3 px-8 focus:outline-none rounded-2xl font-medium text-base">
+                <router-link to="/" class="bg-warning items-center border-0 py-3 px-8 focus:outline-none rounded-2xl font-medium text-base">
                     Login
                 </router-link>
             </div>

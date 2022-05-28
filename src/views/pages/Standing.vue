@@ -33,68 +33,35 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="border-l-4 border-blue-500">
-                  <td width="10">1</td>
-                  <td>
-                    <div class="flex items-center gap-3">
-                      <img src="https://www.bing.com/th?id=OSB.e_B3KyO1fOfBOhB2AArglA--.png&w=30&h=30&o=6&dpr=1.5&pid=SANGAM" class="h-8" alt="">
-                      Man City
-                    </div>
-                  </td>
-                  <td>38</td>
-                  <td>29</td>
-                  <td>6</td>
-                  <td>3</td>
-                  <td>93</td>
+                <tr v-if="loading">
+                  <td colspan="7" align="center" class="px-6 py-4 text-gray-500">Loading...</td>
                 </tr>
-                <tr class="border-l-4 border-yellow-400">
-                  <td width="10">2</td>
-                  <td>
+                <tr v-for="(item, index) in standings" v-bind:key="index">
+                  <td v-if="item.description === 'Promotion - Champions League (Group Stage)'" class="border-l-4 border-blue-500" width="10">{{ item.rank }}</td>
+                  <td v-else-if="item.description === 'Promotion - Europa League (Group Stage)'" class="border-l-4 border-green-500" width="10">{{ item.rank }}</td>
+                  <td v-else-if="item.description === 'Promotion - Europa Conference League (Qualification)'" class="border-l-4 border-yellow-400" width="10">{{ item.rank }}</td>
+                  <td v-else-if="item.description === 'Relegation - Championship'" class="border-l-4 border-red-500" width="10">{{ item.rank }}</td>
+                  <td v-else width="10">{{ item.rank }}</td>
+                  <td class="!pl-0">
                     <div class="flex items-center gap-3">
-                      <img src="https://www.bing.com/th?id=OSB.BrzWk6XCEzRCcnDjOjKyAw--.png&w=30&h=30&o=6&dpr=1.5&pid=SANGAM" class="h-8" alt="">
-                      Liverpool
+                      <img v-bind:src="item.team.logo" class="h-8" alt="">
+                      {{ item.team.name }}
                     </div>
                   </td>
-                  <td>38</td>
-                  <td>29</td>
-                  <td>6</td>
-                  <td>3</td>
-                  <td>93</td>
-                </tr>
-                <tr class="border-l-4">
-                  <td width="10">3</td>
-                  <td>
-                    <div class="flex items-center gap-3">
-                      <img src="https://www.bing.com/th?id=OSB.MMknahyXnsFopSAV6wS%7cNQ--.png&w=30&h=30&o=6&dpr=1.5&pid=SANGAM" class="h-8" alt="">
-                      Chelsea
-                    </div>
-                  </td>
-                  <td>38</td>
-                  <td>29</td>
-                  <td>6</td>
-                  <td>3</td>
-                  <td>93</td>
+                  <td>{{ item.all.played }}</td>
+                  <td>{{ item.all.win }}</td>
+                  <td>{{ item.all.draw }}</td>
+                  <td>{{ item.all.lose }}</td>
+                  <td>{{ item.points }}</td>
                 </tr>
               </tbody>
           </table>
         </div>
         <div class="p-4 rounded-lg bg-white shadow">
           <p class="font-semibold mb-2">Qualification/Relegation</p>
-          <div class="flex items-center gap-2">
-            <div class="bg-blue-500 p-1"></div>
-            <p class="text-sm">UEFA Champions League group stage</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="bg-yellow-400 p-1"></div>
-            <p class="text-sm">Europa League group stage</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="bg-green-500 p-1"></div>
-            <p class="text-sm">Europa Conference group stage</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="bg-red-500 p-1"></div>
-            <p class="text-sm">Relegation</p>
+          <div class="flex items-center gap-2" v-for="(item, index) in qualifications" v-bind:key="index">
+            <div :class="item.color" class="p-1"></div>
+            <p class="text-sm">{{ item.description }}</p>
           </div>
         </div>
       </div>
@@ -107,12 +74,50 @@
 // @ is an alias to /src
 import Header from '@/views/layouts/Header.vue'
 import Footer from '@/views/layouts/Footer.vue'
+import axios from 'axios'
 
 export default {
   name: 'StandingView',
   components: {
     Header,
     Footer,
-  }
+  },
+  data () {
+    return {
+      standings: [],
+      loading: true,
+      qualifications: [
+        {
+          description: 'Promotion - Champions League (Group Stage)',
+          color: 'bg-blue-500',
+        },
+        {
+          description: 'Promotion - Europa League (Group Stage)',
+          color: 'bg-yellow-400',
+        },
+        {
+          description: 'Promotion - Europa Conference League (Qualification)',
+          color: 'bg-green-500',
+        },
+        {
+          description: 'Relegation - Championship',
+          color: 'bg-red-500',
+        },
+      ]
+    }
+  },
+  mounted () {
+    axios.get(process.env.VUE_APP_API_URL + '/standings')
+    .then(response => {
+        const data = response.data.response[0].league.standings[0]
+        console.log(data);
+        this.standings = data
+      })
+      .catch(error => {
+        console.log(error)
+        this.errored = true
+      })
+      .finally(() => this.loading = false)
+  },
 }
 </script>
