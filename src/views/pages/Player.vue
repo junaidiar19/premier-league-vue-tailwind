@@ -33,7 +33,7 @@
 
         <div class="row flex-nowrap overflow-x-auto team-section mb-4">
           <div class="col-3 mb-4" v-for="(item, index) in teams" v-bind:key="index">
-            <div @click="chooseTeam(item.team.id)" :class="(team.id === item.team.id) ? 'border border-primary dark:border-white' : '' " class="p-4 shadow rounded-lg text-primary bg-white flex items-center md:gap-3 hover:shadow-md transition-all cursor-pointer dark:bg-primary-1 dark:border dark:border-primary-2 dark:text-slate-100 dark:hover:border-slate-50">
+            <div @click="chooseTeam(item.team.id)" :class="(team.id === item.team.id) ? 'border border-primary dark:!border-white' : '' " class="p-4 shadow rounded-lg text-primary bg-white flex items-center md:gap-3 hover:shadow-md transition-all cursor-pointer dark:bg-primary-1 dark:border dark:border-primary-2 dark:text-slate-100 dark:hover:border-slate-50">
               <img :src="item.team.logo" class="md:h-8 w-auto h-auto" alt="">
               <p class="md:block hidden">{{ item.team.name }}</p>
             </div>
@@ -45,7 +45,6 @@
             <thead>
               <tr>
                 <th>Player</th>
-                <th>Position</th>
                 <th>Number</th>
                 <th>Age</th>
               </tr>
@@ -55,10 +54,12 @@
                 <td>
                   <div class="flex items-center gap-2">
                     <img :src="item.photo" class="w-10 h-10 rounded-full" alt="">
-                    <p>{{ item.name }}</p>
+                    <div>
+                      <p>{{ item.name }}</p>
+                      <p class="text-xs text-muted">{{ item.position }}</p>
+                    </div>
                   </div>
                 </td>
-                <td>{{ item.position }}</td>
                 <td>{{ item.number }}</td>
                 <td>{{ item.age }} Years</td>
               </tr>

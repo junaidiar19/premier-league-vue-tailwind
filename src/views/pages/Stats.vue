@@ -38,7 +38,7 @@
                 <thead>
                   <tr>
                     <th>Player</th>
-                    <th>Goals</th>
+                    <th class="md:pl-auto !pl-0">Goals</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -55,7 +55,7 @@
                         </div>
                       </div>
                     </td>
-                    <td>{{ item.statistics[0].goals.total }}</td>
+                    <td class="md:pl-auto !pl-0">{{ item.statistics[0].goals.total }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -70,7 +70,7 @@
                 <thead>
                   <tr>
                     <th>Player</th>
-                    <th>Assist</th>
+                    <th class="md:pl-auto !pl-0">Assist</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -87,7 +87,7 @@
                         </div>
                       </div>
                     </td>
-                    <td>{{ item.statistics[0].goals.assists }}</td>
+                    <td class="md:pl-auto !pl-0">{{ item.statistics[0].goals.assists }}</td>
                   </tr>
                 </tbody>
               </table>
