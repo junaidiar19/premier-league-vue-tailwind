@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-    <div class="bg-section">
+    <div class="bg-section  min-h-screen">
       <div class="card-section">
         <p class="font-semibold mb-3 dark:text-slate-400">Total: {{ total }}</p>
         <div class="table-responsive card-table" :class="loading ? 'loading-table' : '' ">

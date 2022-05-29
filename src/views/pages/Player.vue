@@ -28,7 +28,7 @@
 
       </div>
     </div>
-    <div class="bg-section py-4 min-h-screen md:min-h-fit">
+    <div class="bg-section py-4 min-h-screen">
       <div class="card-section">
 
         <div class="row flex-nowrap overflow-x-auto team-section mb-4">
