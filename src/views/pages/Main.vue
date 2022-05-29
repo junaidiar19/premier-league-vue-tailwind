@@ -1,15 +1,15 @@
 <template>
-    <section class="h-full w-full border-box transition-all duration-500 linear py-12 dark:bg-primary">
+    <section class="h-full md:min-h-screen lg:min-h-screen w-full border-box transition-all duration-500 linear py-12 dark:bg-primary">
     <div style="font-family: 'Poppins', sans-serif">
         <!-- Hero-header-2-3 -->
         <div class="container">
           <div class="row justify-center md:justify-between">
-            <div class="md:col-7 order-2 md:order-1 text-center md:text-left">
+            <div class="lg:col-7 md:col-6 order-2 md:order-1 text-center md:text-left">
               <p class="mb-5 leading-relaxed font-semibold text-sm text-red-600">
                   Premier League
               </p>
 
-              <h1 class="md:text-5xl text-primary font-semibold md:leading-tight mb-5 dark:text-slate-100">
+              <h1 class="md:text-4xl lg:text-5xl text-primary font-semibold md:leading-tight mb-5 dark:text-slate-100">
                   The Result Standing & Match of English Premier League
               </h1>
 
@@ -22,7 +22,7 @@
                 </router-link>
               </div>
             </div>
-            <div class="md:col-5 order-1 md:order-2">
+            <div class="lg:col-5 md:col-6 order-1 md:order-2">
               <img id="hero-header-2-3" src="img/premier-league.png" alt="" />
             </div>
           </div>

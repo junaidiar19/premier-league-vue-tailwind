@@ -7,7 +7,7 @@
 }
 
 .page-title {
-  @apply py-5 dark:py-5 dark:pb-0 border-b shadow-md bg-white dark:bg-primary dark:border-b-primary;
+  @apply py-5 dark:py-5 dark:pb-0 border-b shadow-md bg-white dark:bg-primary dark:border-b-0 dark:shadow-none;
 }
 
 .page-title h5 {
@@ -51,7 +51,7 @@
 }
 
 .table-responsive {
-  @apply overflow-scroll md:overflow-hidden;
+  @apply md:overflow-hidden;
 }
 
 .card-table {
@@ -71,7 +71,7 @@
 }
 
 .bottom-menu {
-  @apply fixed bottom-0 inset-x-0 w-full md:hidden flex bg-primary border-t border-gray-600;
+  @apply fixed bottom-0 inset-x-0 w-full lg:hidden flex bg-primary border-t border-gray-600;
 }
 
 .bottom-menu .nav-link {

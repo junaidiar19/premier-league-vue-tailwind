@@ -7,7 +7,7 @@
             <router-link class="flex font-medium items-center" to="/">
               <img src="logo.png" class="h-10 md:h-14" alt="">
             </router-link>
-            <p class="md:hidden text-white text-lg">English Premier League</p>
+            <p class="lg:hidden text-white text-lg">English Premier League</p>
           </div>
 
             <label for="menu-toggle-1-2" class="cursor-pointer hidden">
