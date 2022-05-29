@@ -28,7 +28,7 @@
 
       </div>
     </div>
-    <div class="bg-section py-4">
+    <div class="bg-section py-4 min-h-screen md:min-h-fit">
       <div class="card-section">
 
         <div class="row flex-nowrap overflow-x-auto team-section mb-4">
@@ -50,7 +50,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(item, index) in players.players" v-bind:key="index">
+              <tr v-for="(item, index) in players" v-bind:key="index">
                 <td>
                   <div class="flex items-center gap-2">
                     <img :src="item.photo" class="w-10 h-10 rounded-full" alt="">
@@ -124,7 +124,7 @@ export default {
       })
       .then(response => {
         const result = response.data.response[0]
-        this.players = result
+        this.players = result.players
         this.team.id = result.team.id
         this.team.name = result.team.name
         this.team.logo = result.team.logo
