@@ -7,7 +7,7 @@
 }
 
 .page-title {
-  @apply py-5 dark:py-5 dark:pb-0 border-b shadow-md bg-white dark:bg-primary dark:border-b-0 dark:shadow-none;
+  @apply py-5 dark:py-5 dark:pb-0 border-b shadow-md bg-white dark:bg-primary dark:border-b-0 dark:shadow-none dark:-mb-1;
 }
 
 .page-title h5 {

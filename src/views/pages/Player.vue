@@ -34,7 +34,7 @@
         <div class="row flex-nowrap overflow-x-auto team-section mb-4">
           <div class="col-auto mb-4" v-for="(item, index) in teams" v-bind:key="index">
             <div @click="chooseTeam(item.team.id)" :class="(team.id === item.team.id) ? 'border border-primary dark:!border-white' : '' " class="p-4 shadow rounded-lg text-primary bg-white flex items-center md:gap-3 hover:shadow-md transition-all cursor-pointer dark:bg-primary-1 dark:border dark:border-primary-2 dark:text-slate-100 dark:hover:border-slate-50">
-              <img :src="item.team.logo" class="md:h-8 w-auto h-auto" alt="">
+              <img :src="item.team.logo" class="lg:h-8 md:h-8 h-8" alt="">
               <p class="md:block hidden">{{ item.team.name }}</p>
             </div>
           </div>
