@@ -51,7 +51,7 @@
 }
 
 .table-responsive {
-  @apply md:overflow-hidden;
+  @apply overflow-scroll lg:overflow-hidden;
 }
 
 .card-table {
