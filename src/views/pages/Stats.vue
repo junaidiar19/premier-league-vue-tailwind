@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <div class="bg-section">
+    <div class="bg-section min-h-screen">
       <div class="card-section">
 
         <div class="md:hidden mb-4 md:mb-0">
